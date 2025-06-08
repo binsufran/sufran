@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نموذج: كيف ترى الحياة؟</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 40px;
+      line-height: 1.8;
+      background-color: #f0f2f5;
+      color: #333;
+      text-align: right;
+    }
+    h1 { color: #2c3e50; }
+    .question { margin-bottom: 25px; }
+    button {
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 نموذج: كيف ترى الحياة؟</h1>
+  <p>هل طريقتك في التفكير إيجابية، أم أنك تنظر للأمور بسوداوية؟</p>
+  <form id="quizForm">
+    <div class="question">
+      <label>1. رسبت في اختبار أو لم تُقبل في وظيفة.. كيف ترى الأمر؟</label><br>
+      <input type="radio" name="q1" value="2"> أؤمن أنني سأُعوض لاحقًا، وسأستفيد من التجربة.<br>
+      <input type="radio" name="q1" value="1"> ربما لم يكن لي نصيب، وسأحاول مرة أخرى.<br>
+      <input type="radio" name="q1" value="0"> أنا فاشل، والدنيا لا تعطي إلا المحظوظين.<br>
+    </div>
+    <div class="question">
+      <label>2. تم رفضك بعد رؤية شرعية أو فسخت خطبتك، كيف تفسّر ما حدث؟</label><br>
+      <input type="radio" name="q2" value="2"> الله صرف عني شيئًا لا يناسبني، وسيعوضني خيرًا.<br>
+      <input type="radio" name="q2" value="1"> شعور صعب، لكني أحاول تجاوزه.<br>
+      <input type="radio" name="q2" value="0"> أنا غير مقبول، ومَن مثلي لا يُقبل بسهولة.<br>
+    </div>
+    <div class="question">
+      <label>3. هناك شخص تكلم عنك بسوء أمام الآخرين، ما ردّ فعلك؟</label><br>
+      <input type="radio" name="q3" value="2"> أتعامل معه بحكمة، وأترك له ما قاله، وأكسب احترام الآخرين بصمتي.<br>
+      <input type="radio" name="q3" value="1"> أتضايق قليلًا وأحاول نسيان ما قاله.<br>
+      <input type="radio" name="q3" value="0"> الدنيا مليئة بالحسد والناس تريد تحطيمي.<br>
+    </div>
+    <button type="button" onclick="calculateResult()">احسب نتيجتي</button>
+  </form>
+  <div id="result" class="result" style="display:none;"></div>
+
+  <script>
+    function calculateResult() {
+      let score = 0;
+      for (let i = 1; i <= 3; i++) {
+        const answer = document.querySelector(input[name="q${i}"]:checked);
+        if (answer) score += parseInt(answer.value);
+      }
+      let resultText = "";
+      if (score >= 5) {
+        resultText = "🌟 أنت شخص إيجابي جدًا وترى الحياة بزاوية مشرقة، وتؤمن بأن الخير قادم.";
+      } else if (score >= 3) {
+        resultText = "🌤 تميل للإيجابية لكنك تتأثر أحيانًا بالواقع، وتحتاج إلى تعزيز الثقة بالنفس.";
+      } else {
+        resultText = "🌑 تميل لرؤية الحياة من الزاوية المظلمة، حاول أن تُعيد النظر في طريقة تفكيرك.";
+      }
+      document.getElementById("result").innerText = resultText;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
