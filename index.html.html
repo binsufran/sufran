@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>كيف ترى الحياة؟</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; direction: rtl; }
+        .container { background: white; padding: 30px; border-radius: 10px; max-width: 700px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { text-align: center; }
+        .question { margin-bottom: 20px; }
+        .result { display: none; padding: 20px; margin-top: 20px; border-radius: 10px; }
+        .positive { background-color: #d4edda; }
+        .neutral { background-color: #fff3cd; }
+        .negative { background-color: #f8d7da; }
+        .footer { font-size: 0.9em; margin-top: 40px; text-align: center; color: gray; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>كيف ترى الحياة؟</h1>
+    <p>هذا النموذج يهدف إلى مساعدتك في استكشاف طريقة تعاطيك مع المواقف الحياتية، من خلال عشرة أسئلة تمثّل مشاهد واقعية. لا توجد إجابات صحيحة أو خاطئة، فقط كن صادقًا مع نفسك. نتيجتك لا تُخزَّن، والنموذج لا يجمع أي بيانات شخصية.</p>
+
+    <form id="quizForm">
+        <!-- سيتم إدراج الأسئلة عبر جافاسكربت -->
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <div class="footer">
+        محمد حسن سفران – بروفيسور بقسم التعليم والتعلم – جامعة الملك خالد – المملكة العربية السعودية
+    </div>
+</div>
+
+<script>
+    const questions = [
+        {
+            text: "رُفضت بعد مقابلة وظيفية كنت تظن أنها مضمونة. كيف ترى الأمر؟",
+            options: [
+                { text: "فرصة لمراجعة نفسي، ربما أحتاج لتطوير مهاراتي أو أسلوبي.", score: 2 },
+                { text: "الوظائف أصبحت تعتمد على الواسطات، لا فائدة من السعي.", score: 0 },
+                { text: "ربما هناك فرصة أفضل تنتظرني بإذن الله.", score: 2 }
+            ]
+        },
+        {
+            text: "تأخرتَ في الزواج، رغم محاولاتك الجادة. كيف تفسّر ذلك؟",
+            options: [
+                { text: "هذا تأخير فيه حكمة، ربما الوقت الآن غير مناسب.", score: 2 },
+                { text: "أنا شخص غير مرغوب، ربما بي عيب خفي.", score: 0 },
+                { text: "النصيب لم يأتِ بعد، وسأواصل المحاولة.", score: 2 }
+            ]
+        },
+        {
+            text: "أحد أقربائك خذلك علنًا. كيف تراه؟",
+            options: [
+                { text: "ربما كان تحت ضغط، أو فَهِم الموقف بشكل خاطئ.", score: 2 },
+                { text: "الناس تغيّرت، حتى الأقارب لم يعودوا يُوثق بهم.", score: 0 },
+                { text: "سأحاول أن أُحسن به الظن، لكني أتعلم ألا أُعيد الثقة بسرعة.", score: 1 }
+            ]
+        },
+        {
+            text: "انكشف خطأك في العمل أمام الجميع. كيف تبرّره؟",
+            options: [
+                { text: "كل إنسان يُخطئ، وسأتعلّم لأتجنّب تكراره.", score: 2 },
+                { text: "هذا الموقف سيُلاحقني دائمًا، وسأفقد الاحترام.", score: 0 },
+                { text: "خطأ مؤلم لكنه علّمني كثيرًا، وسأبدأ من جديد.", score: 2 }
+            ]
+        },
+        {
+            text: "شخص يسيء لك باستمرار في مواقع التواصل. ما موقفك؟",
+            options: [
+                { text: "لن أُدخِل نفسي في وحل الردود، وسأتجاهله تمامًا.", score: 2 },
+                { text: "الناس لم تعد تعرف الاحترام، ووسائل التواصل كشفت سوادهم.", score: 0 },
+                { text: "سأرد عليه بأدب مرة واحدة، ثم أحظره.", score: 1 }
+            ]
+        },
+        {
+            text: "حصل حادث مفاجئ عطّل كل خططك، ما رؤيتك؟",
+            options: [
+                { text: "قدّر الله وما شاء فعل، الخير فيما اختاره الله.", score: 2 },
+                { text: "دائمًا الحظ يعاندني، الحياة لا تُنصفني.", score: 0 },
+                { text: "هذا اختبار جديد، وسأُعيد ترتيب أولوياتي.", score: 2 }
+            ]
+        },
+        {
+            text: "بعد تقديم مشروع مهم، جاءك نقدٌ حاد ومؤلم. ماذا تشعر؟",
+            options: [
+                { text: "ربما كان النقد قاسيًا، لكنه قد يحتوي على نقاط تحسّنني.", score: 2 },
+                { text: "الناس لا ترى إلا الأخطاء، حتى لو اجتهدت.", score: 0 },
+                { text: "سأدع التجربة تمر، وأقيم ما قيل بعين ناقدة.", score: 2 }
+            ]
+        },
+        {
+            text: "رأيت شخصًا يحقق أحلامك بينما أنت ما زلت تحاول. ما موقفك؟",
+            options: [
+                { text: "سأفرح له، وأجتهد أكثر، فالرزق بيد الله.", score: 2 },
+                { text: "الحياة غير عادلة، تعطي من لا يستحق وتحرم المجتهد.", score: 0 },
+                { text: "سأراجع خططي، لعلّني أحتاج لتغيير منهجي.", score: 2 }
+            ]
+        },
+        {
+            text: "أحدهم تكلم عنك بسوء أمام الآخرين. كيف ترد؟",
+            options: [
+                { text: "سأتجاهله، فالناس تعرفني وتفرّق بين الحق والافتراء.", score: 2 },
+                { text: "هذا طبيعي، فالناس لا تحب الناجحين.", score: 0 },
+                { text: "سأدافع عن نفسي بهدوء، وأوضح الحقيقة لمن يهمّه الأمر.", score: 1 }
+            ]
+        },
+        {
+            text: "رسبت أو أخفقت في اختبار مهم. كيف تتعامل؟",
+            options: [
+                { text: "سأُراجع ما أخطأت فيه، وأعيد المحاولة بتركيز أكبر.", score: 2 },
+                { text: "هذا يُثبت أنني لا أصلح لهذا التخصص.", score: 0 },
+                { text: "ربما كان ضغط نفسي أو سوء إدارة للوقت، وسأعالج ذلك.", score: 1 }
+            ]
+        }
+    ];
+
+    const form = document.getElementById("quizForm");
+    const resultDiv = document.getElementById("result");
+
+    questions.forEach((q, i) => {
+        const qDiv = document.createElement("div");
+        qDiv.className = "question";
+        qDiv.innerHTML = `<h3>السؤال ${i + 1}</h3><p>${q.text}</p>`;
+        q.options.forEach((opt, j) => {
+            qDiv.innerHTML += `
+                <label>
+                    <input type="radio" name="q${i}" value="${opt.score}" required>
+                    ${opt.text}
+                </label><br>`;
+        });
+        form.appendChild(qDiv);
+    });
+
+    const submitBtn = document.createElement("button");
+    submitBtn.type = "submit";
+    submitBtn.textContent = "اعرض النتيجة";
+    form.appendChild(submitBtn);
+
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        let total = 0;
+        for (let [name, value] of formData.entries()) {
+            total += parseInt(value);
+        }
+
+        let feedback = "";
+        if (total >= 18) {
+            resultDiv.className = "result positive";
+            feedback = "أنت شخص إيجابي ترى النور في أحلك اللحظات، وتؤمن أن كل محنة وراءها منحة. استمر، فأنت مصدر أمل لغيرك.";
+        } else if (total >= 12) {
+            resultDiv.className = "result neutral";
+            feedback = "نظرتك متوازنة، لكنك تتأثر أحيانًا بالعوامل السلبية. حاول أن تتبنى منظورًا أكثر إشراقًا في المواقف الصعبة.";
+        } else {
+            resultDiv.className = "result negative";
+            feedback = "تميل لرؤية الجانب المظلم من الحياة. لا بأس، لكن جرّب أن تبحث عن جانب الخير، وتحيط نفسك بأشخاص إيجابيين.";
+        }
+
+        resultDiv.innerHTML = `<h2>نتيجتك</h2><p>${feedback}</p><p><strong>ملاحظة:</strong> هذا النموذج توعوي فقط ولا يُعدّ تشخيصًا نفسيًّا.</p>`;
+        resultDiv.style.display = "block";
+        form.style.display = "none";
+    };
+</script>
+</body>
+</html>
