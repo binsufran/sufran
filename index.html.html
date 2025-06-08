@@ -1,1 +1,110 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نموذج: كيف ترى الحياة؟</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            direction: rtl;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .result {
+            display: none;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .positive {
+            background-color: #d4edda;
+        }
+        .neutral {
+            background-color: #fff3cd;
+        }
+        .negative {
+            background-color: #f8d7da;
+        }
+        .footer {
+            font-size: 0.9em;
+            margin-top: 40px;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 نموذج: كيف ترى الحياة؟</h1>
+    <p>هل طريقتك في التفكير إيجابية، أم أنك تنظر للأمور بسوداوية؟<br>هذا النموذج يقدّم لك مواقف حياتية واقعية تساعدك على اكتشاف نظرتك للحياة.</p>
+    <form id="quizForm">
+        <div class="question">
+            <label>1. رُفضتَ في اختبار أو لم تُقبل في وظيفة. كيف ترى الأمر؟</label><br>
+            <input type="radio" name="q1" value="2"> أوصي نفسي أني سأصعد لاحقًا، وسأستفيد من التجربة.<br>
+            <input type="radio" name="q1" value="1"> ربما لم يكن لي نصيب، وسأحاول مرة أخرى.<br>
+            <input type="radio" name="q1" value="0"> أنا فاشل، ولذا لا تُعطى الفرص للمحبطين.<br>
+        </div>
+        <div class="question">
+            <label>2. تم رفضك بعد رؤية شرعية أو فسخت خطبتك. كيف تفسّر ما حدث؟</label><br>
+            <input type="radio" name="q2" value="2"> الله صرف عني شيئًا لا يناسبني، وسيعوضني خيرًا.<br>
+            <input type="radio" name="q2" value="1"> شعور صعب، لكني أحاول تجاوزه.<br>
+            <input type="radio" name="q2" value="0"> أنا غير مقبول، ومن مثلي لا يُقبل بسهولة.<br>
+        </div>
+        <div class="question">
+            <label>3. هناك شخص تكلم عنك بسوء أمام الآخرين. ما ردّ فعلك؟</label><br>
+            <input type="radio" name="q3" value="2"> أتعامل معه بحكمة، وأردّ له ما قاله، واكسب احترام الآخرين بصمتي.<br>
+            <input type="radio" name="q3" value="1"> أتصالح قليلًا وألوم نفسي على ما قاله.<br>
+            <input type="radio" name="q3" value="0"> الدنيا مليئة بالحسد والناس تريد تحطيمي.<br>
+        </div>
+        <button type="submit">احسب نتيجتي</button>
+    </form>
+    <div id="result" class="result"></div>
+    <div class="footer">
+        إعداد: د. محمد حسن سفران<br>
+        بروفيسور بقسم التعليم والتعلم – جامعة الملك خالد<br>
+        المملكة العربية السعودية
+    </div>
+</div>
+<script>
+    document.getElementById("quizForm").onsubmit = function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        let total = 0;
+        for (const [name, value] of formData.entries()) {
+            total += parseInt(value);
+        }
+        const resultDiv = document.getElementById("result");
+        let feedback = "";
+        if (total >= 5) {
+            resultDiv.className = "result positive";
+            feedback = "✨ أنت شخص إيجابي في النظر إلى الحياة، وهذا مؤشر رائع على قدرتك على تجاوز التحديات وتحقيق الطمأنينة.";
+        } else if (total >= 3) {
+            resultDiv.className = "result neutral";
+            feedback = "🙂 نظرتك متوازنة، لكن تحتاج أحيانًا إلى دفعة من التفاؤل؛ فالحياة لا تخلو من الأمل.";
+        } else {
+            resultDiv.className = "result negative";
+            feedback = "⚠️ تميل رؤيتك للجانب السلبي من الحياة، راجع نفسك قليلًا وتذكّر أن التفاؤل لا يعني السذاجة.";
+        }
+        resultDiv.innerHTML = "<h2>نتيجتك:</h2><p>" + feedback + "</p><p><strong>ملاحظة:</strong> هذا النموذج لأغراض الوعي، ولا يُمثّل تشخيصًا نفسيًّا.</p>";
+        resultDiv.style.display = "block";
+        form.style.display = "none";
+    };
+</script>
+</body>
+</html>
