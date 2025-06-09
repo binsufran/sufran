@@ -2,83 +2,223 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>نموذج: كيف ترى الحياة؟</title>
+  <title>كيف أفكر؟</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      max-width: 800px;
-      margin: auto;
+      background: #f0f2f5;
       padding: 40px;
-      line-height: 1.8;
-      background-color: #f0f2f5;
-      color: #333;
-      text-align: right;
+      margin: 0;
+      font-size: 17px;
+      color: #222;
     }
-    h1 { color: #2c3e50; }
-    .question { margin-bottom: 25px; }
-    button {
-      padding: 12px 20px;
-      background-color: #3498db;
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #004d40;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+    .intro {
+      background-color: #e0f7fa;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    .question-title {
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .options-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .options-vertical label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #f9f9f9;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .submit-btn {
+      display: block;
+      margin: 40px auto 20px;
+      background: #004d40;
       color: white;
+      padding: 12px 30px;
       border: none;
+      border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #2980b9;
-    }
-    .result {
-      margin-top: 30px;
-      font-weight: bold;
+    .signature {
+      text-align: center;
+      margin-top: 40px;
       font-size: 18px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <h1>📘 نموذج: كيف ترى الحياة؟</h1>
-  <p>هل طريقتك في التفكير إيجابية، أم أنك تنظر للأمور بسوداوية؟</p>
-  <form id="quizForm">
-    <div class="question">
-      <label>1. رسبت في اختبار أو لم تُقبل في وظيفة.. كيف ترى الأمر؟</label><br>
-      <input type="radio" name="q1" value="2"> أؤمن أنني سأُعوض لاحقًا، وسأستفيد من التجربة.<br>
-      <input type="radio" name="q1" value="1"> ربما لم يكن لي نصيب، وسأحاول مرة أخرى.<br>
-      <input type="radio" name="q1" value="0"> أنا فاشل، والدنيا لا تعطي إلا المحظوظين.<br>
+  <div class="container">
+    <h1>كيف أفكر؟</h1>
+    <div class="intro">
+      <p>هل تساءلنا يومًا: هل طريقتنا في التفكير تساعدنا… أم تُتعبنا؟ هل ننظر للأشياء كما هي، أم كما نخاف أن تكون؟</p>
+      <p>من واقع تخصصي في التربية، واهتمامي بأساليب التفكير التي تشكّل قراراتنا ومشاعرنا، صممت هذا المقياس لأساعدك – بطريقة مبسّطة – على التعرف على نمط تفكيرك الغالب: هل هو إيجابي داعم؟ أم سلبي مثقِل؟ أم بينهما؟</p>
+      <p>☑ هذا المقياس ليس أداة تشخيصية طبية أو نفسية، بل هو وسيلة تأمل ذاتي تساعدك على رؤية أنماط تفكيرك بشكل أوضح، وتمهّد لك طريق التغيير إن أردت. فكر فيه كـ مرآة داخلية… لا تُظهر لك من أنت، بل كيف ترى.</p>
+      <p>مع رجائي أن يكون هذا المقياس بدايةً لتفكير أصفى، ونظرة أهدأ، وخطوة نحو حياةٍ أسلم.</p>
     </div>
-    <div class="question">
-      <label>2. تم رفضك بعد رؤية شرعية أو فسخت خطبتك، كيف تفسّر ما حدث؟</label><br>
-      <input type="radio" name="q2" value="2"> الله صرف عني شيئًا لا يناسبني، وسيعوضني خيرًا.<br>
-      <input type="radio" name="q2" value="1"> شعور صعب، لكني أحاول تجاوزه.<br>
-      <input type="radio" name="q2" value="0"> أنا غير مقبول، ومَن مثلي لا يُقبل بسهولة.<br>
-    </div>
-    <div class="question">
-      <label>3. هناك شخص تكلم عنك بسوء أمام الآخرين، ما ردّ فعلك؟</label><br>
-      <input type="radio" name="q3" value="2"> أتعامل معه بحكمة، وأترك له ما قاله، وأكسب احترام الآخرين بصمتي.<br>
-      <input type="radio" name="q3" value="1"> أتضايق قليلًا وأحاول نسيان ما قاله.<br>
-      <input type="radio" name="q3" value="0"> الدنيا مليئة بالحسد والناس تريد تحطيمي.<br>
-    </div>
-    <button type="button" onclick="calculateResult()">احسب نتيجتي</button>
-  </form>
-  <div id="result" class="result" style="display:none;"></div>
+    <form id="quizForm">
+      <!-- الأسئلة -->
+      <div class="question"><div class="question-title">1. عندما أواجه مشكلة:</div><div class="options-vertical">
+        <label><input type="radio" name="q1" value="1"> أستسلم سريعًا</label>
+        <label><input type="radio" name="q1" value="2"> أحاول الصمود</label>
+        <label><input type="radio" name="q1" value="3"> أبحث عن الحل</label></div></div>
 
+      <div class="question"><div class="question-title">2. عندما أتذكر مواقف سيئة في الماضي:</div><div class="options-vertical">
+        <label><input type="radio" name="q2" value="3"> أتعلم منها وأمضي</label>
+        <label><input type="radio" name="q2" value="2"> أحاول تجاهلها</label>
+        <label><input type="radio" name="q2" value="1"> أشعر بالحزن والندم</label></div></div>
+
+      <div class="question"><div class="question-title">3. عندما ينتقدني شخص ما:</div><div class="options-vertical">
+        <label><input type="radio" name="q3" value="1"> أشعر بالإهانة</label>
+        <label><input type="radio" name="q3" value="2"> أفكر في سبب النقد</label>
+        <label><input type="radio" name="q3" value="3"> أستفيد لتحسين نفسي</label></div></div>
+
+      <div class="question"><div class="question-title">4. إذا تأخر أمر ما كنت أتمناه:</div><div class="options-vertical">
+        <label><input type="radio" name="q4" value="2"> أفقد الأمل</label>
+        <label><input type="radio" name="q4" value="3"> أبحث عن بدائل جديدة</label>
+        <label><input type="radio" name="q4" value="1"> أصبر وأنتظر</label></div></div>
+
+      <div class="question"><div class="question-title">5. عندما أستيقظ صباحًا:</div><div class="options-vertical">
+        <label><input type="radio" name="q5" value="2"> أبدأ بالتفاؤل والدعاء</label>
+        <label><input type="radio" name="q5" value="1"> أنهض معكر المزاج</label>
+        <label><input type="radio" name="q5" value="3"> أشعر بالضيق</label></div></div>
+
+      <div class="question"><div class="question-title">6. إذا شعرت أن إنجازي أقل من غيري:</div><div class="options-vertical">
+        <label><input type="radio" name="q6" value="3"> أسعى لتطوير نفسي</label>
+        <label><input type="radio" name="q6" value="2"> أقبل نفسي كما أنا</label>
+        <label><input type="radio" name="q6" value="1"> أشعر بالنقص</label></div></div>
+
+      <div class="question"><div class="question-title">7. عندما يتكرر خطأي:</div><div class="options-vertical">
+        <label><input type="radio" name="q7" value="3"> أتعلم وأحاول من جديد</label>
+        <label><input type="radio" name="q7" value="1"> ألوم نفسي كثيرًا</label>
+        <label><input type="radio" name="q7" value="2"> أحتقر نفسي</label></div></div>
+
+      <div class="question"><div class="question-title">8. عندما ألاحظ أن الآخرين لا يهتمون بي:</div><div class="options-vertical">
+        <label><input type="radio" name="q8" value="2"> أتساءل عن السبب</label>
+        <label><input type="radio" name="q8" value="3"> أبادر بالتواصل</label>
+        <label><input type="radio" name="q8" value="1"> أبتعد عن الناس</label></div></div>
+
+      <div class="question"><div class="question-title">9. عندما أمرّ بظروف صعبة:</div><div class="options-vertical">
+        <label><input type="radio" name="q9" value="3"> أؤمن أنها ستمر</label>
+        <label><input type="radio" name="q9" value="2"> أحاول التماسك</label>
+        <label><input type="radio" name="q9" value="1"> أشعر بالعجز</label></div></div>
+
+      <div class="question"><div class="question-title">10. إذا شعرت أني لم أُفهم بشكل صحيح:</div><div class="options-vertical">
+        <label><input type="radio" name="q10" value="2"> أشرح وجهة نظري</label>
+        <label><input type="radio" name="q10" value="3"> أتفهم اختلاف الفهم</label>
+        <label><input type="radio" name="q10" value="1"> أغضب وأعاتب</label></div></div>
+
+      <div class="question"><div class="question-title">11. عندما أستعرض حياتي الماضية:</div><div class="options-vertical">
+        <label><input type="radio" name="q11" value="1"> أشعر أني كنت فاشلاً</label>
+        <label><input type="radio" name="q11" value="2"> أشكر الله على ما تحقق</label>
+        <label><input type="radio" name="q11" value="3"> أفكر فيما ضاع مني</label></div></div>
+
+      <div class="question"><div class="question-title">12. إذا حدث أمر سيء لي:</div><div class="options-vertical">
+        <label><input type="radio" name="q12" value="3"> أقول قدر الله وما شاء فعل</label>
+        <label><input type="radio" name="q12" value="2"> أبحث عن الدرس المستفاد</label>
+        <label><input type="radio" name="q12" value="1"> أقول دائمًا أنا منحوس</label></div></div>
+
+      <button class="submit-btn" type="submit">عرض النتيجة</button>
+    </form>
+
+    <div class="signature">
+      محمد حسن آل سفران<br>
+      بروفيسور بقسم التعليم والتعلم – جامعة الملك خالد
+    </div>
+  </div>
   <script>
-    function calculateResult() {
-      let score = 0;
-      for (let i = 1; i <= 3; i++) {
-        const answer = document.querySelector(input[name="q${i}"]:checked);
-        if (answer) score += parseInt(answer.value);
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let total = 0;
+      let answered = 0;
+      for (let i = 1; i <= 12; i++) {
+        let options = document.getElementsByName("q" + i);
+        for (let j = 0; j < options.length; j++) {
+          if (options[j].checked) {
+            total += parseInt(options[j].value);
+            answered++;
+            break;
+          }
+        }
       }
-      let resultText = "";
-      if (score >= 5) {
-        resultText = "🌟 أنت شخص إيجابي جدًا وترى الحياة بزاوية مشرقة، وتؤمن بأن الخير قادم.";
-      } else if (score >= 3) {
-        resultText = "🌤 تميل للإيجابية لكنك تتأثر أحيانًا بالواقع، وتحتاج إلى تعزيز الثقة بالنفس.";
+      if (answered < 12) {
+        alert("يرجى الإجابة على جميع الأسئلة.");
+        return;
+      }
+      let result = "";
+      if (total <= 18) {
+        result = `🔴 نتيجتك: التفكير السلبي<br><strong>📍 عنوان: “رسالة لمن أنهكه التفكير الطويل”</strong><br>
+        ❝ سنوات من التفكير الزائد، والتخطيط لكل سيناريو، والشك في كل احتمال… ماذا غيّرت؟ هل جعلتك أكثر راحة؟ ❞<br><br>
+        🧠 لنتأمل بصدق:<br>
+        • الحذر المفرط لم يمنع السوء… لكنه منعك من النوم.<br>
+        • التفكير الطويل لم يأتِ بحلّ… بل أتى بالقلق.<br>
+        • والاحتفاظ بكل إساءة، لم يُنصفك… بل أثقل قلبك.<br><br>
+        🕊 وتذكّر قول الله: “ولا تنسوا الفضل بينكم”<br><br>
+        🔹 لا تنسَ أن تدعو لمن كتب هذا المقياس، عسى أن يشملك الله بدعاء من لا تُرد دعوته. 🤍`;
+      } else if (total <= 27) {
+        result = `🟡 نتيجتك: التفكير المختلط<br><strong>📍 عنوان: “أنت على مفترق طرق… فاختر طريقك الآن”</strong><br>
+        ❝ أحيانًا ترى الأمور من زاويتين: يومًا تبتسم… ويومًا تتوجّس. ❞<br><br>
+        🛠 خطوات صغيرة تساعدك على الاستقرار الذهني:<br>
+        • قلل التحليل الزائد<br>
+        • راقب حديثك الذاتي<br>
+        • خصص وقتًا للتفكير<br>
+        • أثبت قدمك في الخير<br><br>
+        🔹 وادعُ لمن كتب هذا المقياس، كما تدعو لمن أرشدك لخير… فإن الدعاء صدقة لا يراها الناس، لكن يراها الله. 🤍`;
       } else {
-        resultText = "🌑 تميل لرؤية الحياة من الزاوية المظلمة، حاول أن تُعيد النظر في طريقة تفكيرك.";
+        result = `🟢 نتيجتك: التفكير الإيجابي<br><strong>📍 عنوان: “ما تملكه… أثمن مما تظن”</strong><br>
+        ❝ تفكيرك الإيجابي ليس صدفة، بل نعمة ومهارة. ❞<br><br>
+        🔁 نصائح للاستمرار والتأثير:<br>
+        • اكتب شيئًا واحدًا كنت ممتنًا له كل يوم<br>
+        • شارك هذا النمط<br>
+        • لا تنعزل<br><br>
+        🔹 وإن وجدت في هذا المقياس ما يذكّرك بنعمة… فلا تنسَ أن تدعو لكاتبه، لعل الله يبارك لكما في الخير الذي اجتمع في القلوب. 🤍`;
       }
-      document.getElementById("result").innerText = resultText;
-      document.getElementById("result").style.display = "block";
-    }
+
+      const oldResult = document.getElementById("resultBox");
+      if (oldResult) oldResult.remove();
+
+      const feedbackBox = document.createElement("div");
+      feedbackBox.id = "resultBox";
+      feedbackBox.innerHTML = `
+        <hr>
+        <div style="background:#f9f9f9; padding:25px; border-radius:10px; font-size:18px; line-height:1.9; color:#222; border: 1px solid #ddd;">
+          <div style="margin-bottom:10px;">🔢 <strong>مجموع درجاتك:</strong> ${total} من 36</div>
+          <div style="margin-bottom:20px;">${result}</div>
+          <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; font-size:16px; border:none; border-radius:6px; background:#607d8b; color:white; cursor:pointer;">🔄 إعادة المحاولة</button>
+        </div>`;
+      document.querySelector(".container").appendChild(feedbackBox);
+      window.scrollTo(0, document.body.scrollHeight);
+    });
   </script>
-</div>
 </body>
 </html>
